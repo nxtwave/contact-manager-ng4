@@ -1,0 +1,22 @@
+
+<style>
+  .card-body p {
+    margin: 0;
+  }
+</style>
+
+<section class="contacts">
+
+  <h1><span class="glyphicon glyphicon-list icon" aria-hidden="true"></span>
+    Contacts
+  </h1>
+
+  <hr/>
+
+  <div class="card-columns">
+    <div *ngFor="let contact of contacts">
+      <app-contact-card [contact]="contact"></app-contact-card>
+    </div>
+  </div>
+
+</section>
