@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../data.service';
+import {DataService} from '../../data.service';
 
 @Component({
   selector: 'app-contacts',
-  templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css']
+  templateUrl: './contact-list.component.html',
+  styleUrls: ['./contact-list.component.css']
 })
-export class ContactsComponent implements OnInit {
+export class ContactListComponent implements OnInit {
 
   /**
    * Contacts

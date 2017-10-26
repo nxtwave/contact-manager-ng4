@@ -6,6 +6,6 @@
     <p class="card-text">{{contact.city}}, {{contact.state}} {{contact.zip}}</p>
   </div>
   <div class="card-footer bg-transparent">
-    <a ui-sref="contacts.detail({contactId: contact._id})" class="btn btn-primary btn-sm">Edit</a>
+    <a routerLink="contact/{{contact._id}}" class="btn btn-primary btn-sm">Edit</a>
   </div>
 </div>

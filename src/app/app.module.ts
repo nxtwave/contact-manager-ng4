@@ -1,30 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
-import {AppRoutingModule} from './app-routing.module';
+import {AppRoutingModule} from './app.routing';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { ContactCardComponent} from './contacts/contact-card.component';
+import {AppComponent} from './app.component';
 
 import {DataService} from './data.service';
+import {ContactsModule} from './contacts/contacts.module';
+import {HomeModule} from './home/home.module';
+import {AboutModule} from './about/about.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent,
-    ContactsComponent,
-    ContactCardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ContactsModule,
+    HomeModule,
+    AboutModule,
     AppRoutingModule
   ],
   providers: [DataService],

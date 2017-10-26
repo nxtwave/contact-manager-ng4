@@ -25,12 +25,27 @@ export class DataService {
   }
 
   /**
+   * Retrieve single contact
+   * @param id
+   * @returns {Observable<any>}
+   */
+  getContact(id): Observable<any> {
+    return this.http.get(`/api/contact/${id}`)
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
+  }
+
+  updateContact(id, body) {
+    return this.http.put(`/api/contact/${id}`, body);
+  }
+
+  /**
    * Handle data retrieval errors
    * @param error
    * @returns {ErrorObservable}
    */
   handleError(error: any) {
-    console.error(error);
+    console.error('data.service.error', error);
     return Observable.throw(error.json().error || 'Server Error');
   }
 

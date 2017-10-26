@@ -5,7 +5,5 @@ import {Component, Input} from '@angular/core';
   templateUrl: './contact-card.component.html'
 })
 export class ContactCardComponent {
-
   @Input() contact: any;
-
 }

@@ -1,0 +1,111 @@
+<section *ngIf="contact$ | async as contact">
+  <style>
+    .icon {
+      font-size: 80%;
+    }
+    .has-danger {
+      color: red !important;
+    }
+
+  </style>
+
+  <h1><span class="glyphicon glyphicon-user icon" aria-hidden="true"></span>
+    {{contact.firstName}}&nbsp;{{contact.lastName}}
+  </h1>
+
+  <hr/>
+
+  <form class="form" #contactForm="ngForm" (ngSubmit)="onSubmit(contact)" novalidate>
+
+    <div class="form-row">
+      <div class="col col-lg-4 col-sm-12">
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" class="form-control" id="company" name="company"
+            [(ngModel)]="contact.company"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col col-lg-4 col-12">
+        <div class="form-group">
+          <label for="lastname">Lastname</label>
+          <input type="text" class="form-control" id="lastname" name="lastname"
+            [(ngModel)]="contact.lastName"
+            required>
+        </div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div class="form-group">
+          <label for="firstname">Firstname</label>
+          <input type="text" class="form-control" id="firstname" name="firstname"
+            [(ngModel)]="contact.firstName"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-lg-4 col-sm-12">
+        <div class="form-group">
+          <label for="street">Street</label>
+          <input type="text" class="form-control" id="street" name="street" [(ngModel)]="contact.street">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-lg-4 col-sm-12 col-12">
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city" name="city" [(ngModel)]="contact.city">
+        </div>
+      </div>
+
+      <!--
+      <div class="col-lg-4 col-12">
+        <div class="form-group">
+          <label for="state">State</label>
+          <select class="form-control" id="state" name="state" [(ngModel)]="contact.state">
+            <option *ngFor="state in $ctrl.states" value="{{state.abbreviation}}">{{state.name}}</option>
+          </select>
+        </div>
+      </div>
+      -->
+    </div>
+
+    <div class="form-row">
+      <div class="col-lg-4 col-12">
+        <div class="form-group">
+          <label for="zip">Zip</label>
+          <input type="text" class="form-control" id="zip" name="state" [(ngModel)]="contact.zip">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-lg-4 col-12">
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" class="form-control" id="phone" name="phone" [(ngModel)]="contact.phone">
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-12">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="contact.email" required>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+
+    <button class="btn btn-default" type="button" (click)="onCancel()">Cancel</button>
+    <button class="btn btn-primary" type="submit">Save</button>
+  </form>
+</section>
+
+
