@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var environment = require('../environment.json');
+console.log('environment', JSON.stringify(environment, null, '\t'));
+
 var contactSchema = new Schema({
   company: String,
   firstName: String,
@@ -13,7 +16,7 @@ var contactSchema = new Schema({
   email: String
 });
 
-mongoose.connect('mongodb://localhost/contacts');
+mongoose.connect(`mongodb:${environment.mongo.location}/${environment.mongo.database}`);
 
 var Contact = mongoose.model('Contact', contactSchema);
 
