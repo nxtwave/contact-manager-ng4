@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
+import {HttpErrorResponse} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+
 
 @Injectable()
 export class DataService {
@@ -40,13 +43,16 @@ export class DataService {
   }
 
   /**
-   * Handle data retrieval errors
+   * Handle Http errors
    * @param error
    * @returns {ErrorObservable}
    */
-  handleError(error: any) {
-    console.error('data.service.error', error);
-    return Observable.throw(error.json().error || 'Server Error');
+  private handleError(error: any) {
+    const errMsg = (error.message) ? error.message :
+      error.status ? `${error.status} - ${error.statusText} - ${error.url}` : 'Server error';
+
+    console.error('handleError', error); // log to console instead
+    return Observable.throw(errMsg);
   }
 
 }

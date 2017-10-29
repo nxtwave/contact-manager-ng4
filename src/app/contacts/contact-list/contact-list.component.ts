@@ -15,6 +15,11 @@ export class ContactListComponent implements OnInit {
   contacts: any[] = [];
 
   /**
+   * Error
+   */
+  error: any;
+
+  /**
    * Constructor
    * @param {DataService} dataService
    */
@@ -25,7 +30,9 @@ export class ContactListComponent implements OnInit {
    */
   ngOnInit() {
     this.dataService.getContacts()
-      .subscribe((data: any[]) => this.contacts = data);
+      .subscribe(
+        contacts => this.contacts = contacts,
+        error => this.error = <any>error);
   }
 
 }

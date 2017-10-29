@@ -13,10 +13,15 @@
 
   <hr/>
 
-  <div class="card-columns">
+  <div class="card-columns" *ngIf="contacts">
     <div *ngFor="let contact of contacts">
       <app-contact-card [contact]="contact"></app-contact-card>
     </div>
+  </div>
+
+  <div class="alert alert-warning" *ngIf="error">
+    <p>The contacts data service is not available. Please try again later.</p>
+    <p>{{error}}</p>
   </div>
 
 </section>
