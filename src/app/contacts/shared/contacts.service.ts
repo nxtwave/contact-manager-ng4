@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 
 
 @Injectable()
-export class DataService {
+export class ContactDataService {
 
   /**
    * Constructor

@@ -7,7 +7,6 @@ import {AppRoutingModule} from './app.routing';
 
 import {AppComponent} from './app.component';
 
-import {DataService} from './data.service';
 import {ContactsModule} from './contacts/contacts.module';
 import {HomeModule} from './home/home.module';
 import {AboutModule} from './about/about.module';
@@ -25,7 +24,6 @@ import {AboutModule} from './about/about.module';
     AboutModule,
     AppRoutingModule
   ],
-  providers: [DataService],
   bootstrap: [AppComponent]
 })
 

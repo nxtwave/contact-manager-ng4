@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../../data.service';
+import {ContactDataService} from '../shared/contacts.service';
 
 @Component({
   selector: 'app-contacts',
@@ -23,7 +23,7 @@ export class ContactListComponent implements OnInit {
    * Constructor
    * @param {DataService} dataService
    */
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: ContactDataService) {}
 
   /**
    * Initialize

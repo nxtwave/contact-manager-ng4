@@ -4,7 +4,7 @@ import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
-import {DataService} from '../../data.service';
+import {ContactDataService} from '../shared/contacts.service';
 
 @Component({
   selector: 'app-contact-detail',
@@ -27,7 +27,7 @@ export class ContactDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private dataService: DataService
+    private dataService: ContactDataService
   ) {}
 
   /**
