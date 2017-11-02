@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+
 import {ContactDataService} from '../shared/contacts.service';
+import {Contact} from '../shared/contact.model';
 
 @Component({
   selector: 'app-contacts',
@@ -9,13 +12,12 @@ import {ContactDataService} from '../shared/contacts.service';
 export class ContactListComponent implements OnInit {
 
   /**
-   * Contacts
-   * @type {Array}
+   * Contact List
    */
-  contacts: any[] = [];
-
+  contacts: Observable<Contact[]>
+;
   /**
-   * Error
+   * Error message from data service
    */
   error: any;
 
@@ -26,13 +28,10 @@ export class ContactListComponent implements OnInit {
   constructor(private dataService: ContactDataService) {}
 
   /**
-   * Initialize
+   * Initialize component, retrieve data
    */
   ngOnInit() {
-    this.dataService.getContacts()
-      .subscribe(
-        contacts => this.contacts = contacts,
-        error => this.error = <any>error);
+    this.contacts = this.dataService.getContacts();
   }
 
 }

@@ -1,10 +1,3 @@
-
-<style>
-  .card-body p {
-    margin: 0;
-  }
-</style>
-
 <section class="contacts">
 
   <h1><span class="glyphicon glyphicon-list icon" aria-hidden="true"></span>
@@ -14,7 +7,7 @@
   <hr/>
 
   <div class="card-columns" *ngIf="contacts">
-    <div *ngFor="let contact of contacts">
+    <div *ngFor="let contact of contacts | async">
       <app-contact-card [contact]="contact"></app-contact-card>
     </div>
   </div>
