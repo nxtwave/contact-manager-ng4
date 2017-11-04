@@ -24,7 +24,7 @@ var Contact = mongoose.model('Contact', contactSchema);
  * Return the list of contacts
  * @returns {T|Query|State|*}
  */
-module.exports.list = function() {
+module.exports.list = function () {
   return Contact.find({}).exec();
 };
 
@@ -33,7 +33,7 @@ module.exports.list = function() {
  * @param id contact id to retrieve
  * @param callback the callback method
  */
-module.exports.get = function(id) {
+module.exports.get = function (id) {
   return Contact.findOne({_id: id}).exec();
 };
 
@@ -43,7 +43,7 @@ module.exports.get = function(id) {
  * @param document the update document
  * @param callback the callback method
  */
-module.exports.update = function(id, document) {
+module.exports.update = function (id, document) {
   return Contact.update({_id: id}, document).exec();
 };
 
@@ -52,7 +52,7 @@ module.exports.update = function(id, document) {
  * @param document the create document
  * @param callback the callback method
  */
-module.exports.create = function(document) {
+module.exports.create = function (document) {
   return Contact.create(document).exec();
 };
 
@@ -61,6 +61,6 @@ module.exports.create = function(document) {
  * @param id the contact id to delete
  * @param callback the callback method
  */
-module.exports.delete = function(id) {
+module.exports.delete = function (id) {
   return Contact.remove({_id: id}).exec();
 };
