@@ -14,12 +14,12 @@ export class ContactListComponent implements OnInit {
   /**
    * Contact List
    */
-  contacts: Observable<Contact[]>
+  contacts$: Observable<Contact[]>
 ;
   /**
    * Error message from data service
    */
-  error: any;
+  error: string;
 
   /**
    * Constructor
@@ -31,7 +31,11 @@ export class ContactListComponent implements OnInit {
    * Initialize component, retrieve data
    */
   ngOnInit() {
-    this.contacts = this.dataService.getContacts();
+    this.contacts$ = this.dataService.getContacts().catch((err) => {
+      this.error = err.message; return Observable.throw(err);
+    });
+
+    console.log('contacts$', this.contacts$);
   }
 
 }

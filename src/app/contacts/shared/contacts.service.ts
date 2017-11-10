@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import {HttpErrorResponse} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
@@ -12,7 +12,7 @@ import {Contact} from '../shared/contact.model';
 
 export class State {
   constructor(public name: string,
-              public abbreviation: string){}
+              public abbreviation: string) {}
 }
 
 @Injectable()
@@ -82,48 +82,41 @@ export class ContactDataService {
    * Constructor
    * @param {Http} http
    */
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   /**
-   * Retrieve list of contacts
+   * Retrieve list of contacts as Observable
    * @returns {Observable<Contact[]>}
    */
   getContacts(): Observable<Contact[]> {
-    return this.http.get('/api/contacts')
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
+    return this.http.get<Contact[]>('/api/contacts');
   }
 
   /**
-   * Retrieve single contact
+   * Retrieve single constact from ID as Observable
    * @param id
    * @returns {Observable<Contact>}
    */
   getContact(id): Observable<Contact> {
-    return this.http.get(`/api/contact/${id}`)
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
-  }
-
-  updateContact(id, body) {
-    return this.http.put(`/api/contact/${id}`, body);
-  }
-
-  getStates(): Observable<State[]> {
-    return Observable.of(this.usStates);
+    return this.http.get<Contact>(`/api/contact/${id}`);
   }
 
   /**
-   * Handle Http errors
-   * @param error
-   * @returns {ErrorObservable}
+   * Update database row for contact
+   * @param id
+   * @param body
+   * @returns {Observable<Contact>}
    */
-  private handleError(error: any) {
-    const errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText} - ${error.url}` : 'Server error';
+  updateContact(id, body): Observable<Contact> {
+    return this.http.put<Contact>(`/api/contact/${id}`, body);
+  }
 
-    console.error('handleError', error); // log to console instead
-    return Observable.throw(errMsg);
+  /**
+   * Returns list of US States as Observable
+   * @returns {Observable<State[]>}
+   */
+  getStates(): Observable<State[]> {
+    return Observable.of(this.usStates);
   }
 
 }
